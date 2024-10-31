@@ -1,0 +1,19 @@
+name: 🚀 Deploy to cPanel
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: 📂 Sync files to cPanel
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.ftp.infinityfree.com }}
+        username: ${{ secrets.if0_37628837 }}
+        password: ${{ secrets.pe000cdobby}
+        server-dir: public_html/
