@@ -35,12 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     function updateImage(index) {
-      slider.style.transform = `translateX(${index * -100}%)`; // Smooth slide transition
+      const containerWidth = document.querySelector('.portfolio-container').offsetWidth;
+      slider.style.transform = `translateX(${index * -containerWidth}px)`; // Adjust slide position based on container width
       const indicators = document.querySelectorAll(".indicator");
       indicators.forEach((indicator, i) => {
-        indicator.classList.toggle("active", i === index);
+          indicator.classList.toggle("active", i === index);
       });
-    }
+  }
   
     leftArrow.addEventListener("click", function () {
       currentIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1;
