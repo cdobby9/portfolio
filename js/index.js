@@ -85,3 +85,55 @@ const settings = {
 
 document.querySelector("#card-wrap").style.perspective = `${settings.perspective}px`;
 
+(() => {
+  const boxes = document.querySelectorAll('.work-box');
+
+  boxes.forEach(box => {
+    const img = box.querySelector('.work-box-image');
+    const btn = box.querySelector('.work-box-button');
+
+    // Configuration
+    const maxTilt = 10;
+    const maxOffset = 40;
+    const speed = 0.1;
+
+    // State
+    let mouseX = 0, mouseY = 0;
+    let targetX = 0, targetY = 0;
+    let btnX = 0, btnY = 0;
+    let isHovering = false;
+
+    box.addEventListener('mouseenter', () => {
+      isHovering = true;
+      btn.style.opacity = '1';
+      btn.style.transform = 'translate(-50%, -50%) scale(1)';
+      requestAnimationFrame(update);
+    });
+
+    box.addEventListener('mousemove', e => {
+      const rect = box.getBoundingClientRect();
+      mouseX = (e.clientX - rect.left) / rect.width * 2 - 1;
+      mouseY = (e.clientY - rect.top) / rect.height * 2 - 1;
+      mouseX = Math.max(-1, Math.min(1, mouseX));
+      mouseY = Math.max(-1, Math.min(1, mouseY));
+      targetX = mouseX * maxOffset;
+      targetY = mouseY * maxOffset;
+    });
+
+    box.addEventListener('mouseleave', () => {
+      isHovering = false;
+      img.style.transform = `rotateX(0deg) rotateY(0deg)`;
+      btn.style.opacity = '0';
+      btn.style.transform = 'translate(-50%, -50%) scale(0)';
+    });
+
+    function update() {
+      if (!isHovering) return;
+      btnX += (targetX - btnX) * speed;
+      btnY += (targetY - btnY) * speed;
+      btn.style.left = `calc(50% + ${btnX}px)`;
+      btn.style.top = `calc(50% + ${btnY}px)`;
+      requestAnimationFrame(update);
+    }
+  });
+})();
