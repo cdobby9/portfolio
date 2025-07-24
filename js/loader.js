@@ -11,12 +11,13 @@ function loadComponent(id, url) {
         console.error("Component load failed:", err);
         document.getElementById(id).innerHTML = `
           <div style="padding: 1rem; background: #fee; color: #900;">
-            Failed to load navbar.
+            Failed to load navbar and footer.
           </div>`;
       });
   }
   
   window.addEventListener("DOMContentLoaded", () => {
     loadComponent("navbar-load", "components/navBar.html");
+    loadComponent("footer-load", "components/footer.html");
   });
   
