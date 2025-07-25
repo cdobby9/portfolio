@@ -15,6 +15,7 @@
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5);
     border-radius: 6px;
     z-index: 5;
+    display: block;
   }
   .code header {
     display: grid;
@@ -193,3 +194,13 @@
       border-color: white;
     }
   }
+
+  @media (max-width: 768px) {
+.code {
+  display: none;
+}
+
+.illustration-editor {
+    margin-right: 0;
+  }
+}

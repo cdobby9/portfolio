@@ -137,3 +137,12 @@ document.querySelector("#card-wrap").style.perspective = `${settings.perspective
     }
   });
 })();
+
+  // Duration matches your SVG animation duration (3 seconds)
+  const animationDuration = 3000;
+
+  // Wait for the animation duration, then hide loading and show content
+  setTimeout(() => {
+    document.getElementById('loading-screen').style.display = 'none';
+    document.getElementById('page-content').style.display = 'block';
+  }, animationDuration);

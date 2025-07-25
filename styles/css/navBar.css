@@ -20,7 +20,10 @@
       padding-top: 2rem;
       display: grid;
       overflow: hidden;
-      animation: 3s opacity
+    opacity: 0; /* Start invisible */
+    animation: 2s opacity;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
   }
   
   
@@ -141,3 +144,25 @@
   .navBar-button:hover .navBar-button-inner-line-right {
     width: 20px;
   }
+
+
+   @media (max-width: 660px) {
+.navBar {
+  grid-template-rows: 1fr;
+grid-template-columns: 1fr;
+justify-content: center;
+padding-top: 0rem;
+  }
+
+  .navBar-right {
+    justify-content: center;
+  }
+
+  .navBar-left {
+    text-align: center;
+  }
+
+  .navBar-button {
+    display: none;
+  }
+}

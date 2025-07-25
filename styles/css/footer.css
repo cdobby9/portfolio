@@ -35,6 +35,7 @@ background: linear-gradient(109.61deg, #262626 4.26%, #202125 84.84%);
   gap: 2rem;
   width: 100%;
   text-align: center;
+  overflow: hidden;
 }
 
 .footer-row {
@@ -106,4 +107,21 @@ background: linear-gradient(109.61deg, #262626 4.26%, #202125 84.84%);
     font-size: 1rem;
     font-weight: 400;
     margin-top: .5rem;
+    text-align: center;
   }
+
+  @media (max-width: 768px) {
+.footer-img {
+    width: 100%;
+  }
+
+}
+
+ @media (max-width: 479px) {
+.footer-row-1  {
+grid-template-columns: repeat(1, 1fr);
+  }
+  .footer-row-2 {
+grid-template-columns: repeat(1, 1fr);
+  }
+}
