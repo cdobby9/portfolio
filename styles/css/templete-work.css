@@ -380,3 +380,13 @@ body {
   margin-top: 1vw;
   margin-bottom: 2vw;
 }
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
