@@ -65,6 +65,10 @@ body {
   font-family: Clash;
   font-weight: 400;
   overflow-x: hidden;
+  opacity: 0; /* Start invisible */
+  animation: 2s opacity;
+  animation-delay: 2.5s;
+  animation-fill-mode: forwards;
 }
 
 
