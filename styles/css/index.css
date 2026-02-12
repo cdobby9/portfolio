@@ -896,7 +896,7 @@ letter-spacing: 4px;
 .cta-logo {
     width: 70px;
     height: 70px;
-    background-color: var(--primary); /* This will be the color of the logo */
+    background-color: var(--primary);
     -webkit-mask: url('../img/logoV2.svg') no-repeat center / contain;
     mask: url('../img/logoV2.svg') no-repeat center / contain;
 }
