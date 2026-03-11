@@ -1,3 +1,5 @@
+initLoadingScreen();
+
 document.addEventListener("DOMContentLoaded", () => {
   initLenis();
   ensureComponentFallbacks();
@@ -304,6 +306,28 @@ function escapeHtml(value) {
 
 function escapeAttr(value) {
   return escapeHtml(value);
+}
+
+function initLoadingScreen() {
+  const loadingScreen = document.getElementById("loading-screen");
+  if (!document.body) {
+    return;
+  }
+
+  if (!loadingScreen) {
+    document.body.classList.add("page-ready");
+    return;
+  }
+
+  const animationDuration = 3300;
+  const fadeDuration = 350;
+  window.setTimeout(() => {
+    loadingScreen.classList.add("is-exiting");
+    document.body.classList.add("page-ready");
+    window.setTimeout(() => {
+      loadingScreen.style.display = "none";
+    }, fadeDuration);
+  }, animationDuration);
 }
 
 function initLenis() {
