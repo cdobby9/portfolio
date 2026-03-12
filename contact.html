@@ -36,7 +36,7 @@
     <div id="navbar-load"></div>
   </header>
 
-  <main class="contact-main"> <!-- use web3forms -->
+  <main class="contact-main"> <!-- use netlify forms or web3forms -->
     <section class="contact-wrap" aria-label="Contact details and form">
       <div class="contact-left">
         <div class="contact-top">
@@ -56,7 +56,7 @@
       </div>
 
       <div class="contact-right">
-        <form class="contact-form" action="#" method="post" netlify novalidate>
+        <form name="contact-emailer" class="contact-form" action="#" method="post" netlify novalidate>
           <input class="contact-input" type="text" name="name" placeholder="Your Name" aria-label="Your Name" required>
           <input class="contact-input" type="email" name="email" placeholder="Your Email" aria-label="Your Email" required>
           <textarea class="contact-input contact-input-message" name="message" placeholder="Your Message" aria-label="Your Message" required></textarea>

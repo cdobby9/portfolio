@@ -58,9 +58,24 @@ function initContactForm() {
       return;
     }
 
+    // Get the submit button
+    const submitButton = form.querySelector(".contact-submit");
+    const originalButtonText = submitButton.textContent;
+
+    // Change button text to 'Sent'
+    submitButton.textContent = "sent - we'll be in touch!";
+    submitButton.disabled = true;
+
     form.classList.add("is-submitted");
+    
+    // Actually submit the form to Netlify
+    form.submit();
+
+    // Reset button text after 2 seconds
     window.setTimeout(() => {
+      submitButton.textContent = originalButtonText;
+      submitButton.disabled = false;
       form.classList.remove("is-submitted");
-    }, 1200);
+    }, 2000);
   });
 }
