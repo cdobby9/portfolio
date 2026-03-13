@@ -157,10 +157,10 @@
             <div class="about-text-container">
               <h1 class="about-text-header">About <span style="color: var(--primary);">Me.</span></h1>
               <p class="about-text-body">I build custom websites and software tailored specifically to what your business needs — no unnecessary extras, just solutions that work. As a freelance developer, I collaborate closely with clients to turn ideas into practical, well-crafted digital tools. Currently, I’m preparing to study computer science at university, which means I’m passionate about learning and eager to bring fresh thinking to every project.</p>
-                    <div class="navBar-button">
+                    <div class="navBar-button"  style="margin-top: 15px;">
           <div class="navBar-button-inner">
             <div class="navBar-button-inner-line-left"></div>
-            View my CV
+            See what I offer
             <div class="navBar-button-inner-line-right"></div>
           </div>
         </div>
@@ -286,28 +286,36 @@
     <section class="cards">
 
       <div id="card-wrap">
-        <div class="card-shiny c1">
-          <h1 class="cards-title">Hand<br><span style="color: var(--primary);">Coded.</span></h1>
-          <p class="cards-body">Every website I create is hand-coded from scratch using HTML, CSS, and JavaScript. No templates, no shortcuts—just unique, tailored designs that make your brand stand out. I invest time and care into crafting websites that are fast, functional, and perfectly suited to your needs.</p>
+        <div class="card-shiny">
+          <div class="card-image">
+            <svg viewBox="0 0 250 195" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+              <rect width="250" height="195" fill="#b0b8c1"/>
+              <!-- sun -->
+              <circle cx="200" cy="52" r="22" fill="#d6dde5"/>
+              <!-- back hill -->
+              <path d="M0 130 Q65 78 125 118 Q178 152 250 102 L250 195 L0 195 Z" fill="#c8d0d9"/>
+              <!-- front hill -->
+              <path d="M0 158 Q72 118 145 148 Q195 168 250 138 L250 195 L0 195 Z" fill="#dce3ea"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h1 class="cards-title">Hand <span style="color: var(--primary);">Coded.</span></h1>
+            <div class="cards-tags">
+                <span class="tag">Web Development</span>
+                <span class="tag alt">UI/UX Design</span>
+                <span class="tag alt">JavaScript</span>
+                <span class="tag alt">Python</span>
+            </div>
+            <div class="cards-date">
+              31st October 2024
+            </div>
+            <p class="cards-body">Every website I create is hand-coded from scratch using HTML, CSS, and JavaScript. No templates, no shortcuts—just unique, tailored designs that make your brand stand out. I invest time and care into crafting websites that are fast, functional, and perfectly suited to your needs.</p>
+            <div class="cards-links">
+              <a class="card-link" href="/work" style="color: var(--primary);">View All <span class="arrow" style="color: var(--text);">→</span></a>
+              <a class="card-link" href="/work/portfolio">View This <span class="arrow">→</span></a>
+            </div>
+          </div>
         </div>
-
-
-        <div class="card-shiny c2">
-          <h1 class="cards-title">Responsive <span style="color: var(--primary);">Pages.</span></h1>
-          <p class="cards-body">Your website will look great on any device, from desktops to smartphones. I ensure that each design is fully responsive, so your customers have the best experience no matter how they view your site.</p>
-        </div>
-
-
-        <div class="card-shiny c3">
-          <h1 class="cards-title">User-Centric <span style="color: var(--primary);">Design.</span></h1>
-          <p class="cards-body">I specialize in creating visually impressive as well as user-friendly designs. My goal is to build a site that not only looks good but also ensures your visitors can easily navigate and find what they’re looking for.</p>
-        </div>
-
-        <div class="card-shiny c4">
-          <h1 class="cards-title">Backend <span style="color: var(--primary);">Integration.</span></h1>
-          <p class="cards-body">I can set up secure, scalable systems that work smoothly in the background, managing everything from user accounts to online forms. All without unnecessary complexity.</p>
-        </div>
-
 
       </div>
 
@@ -338,13 +346,15 @@
       <div class="cta-text">
         <div class="cta-logo"></div>
         <p class="cta-head">let's create<br>amazing works</p>
-        <div class="navBar-button">
-          <div class="navBar-button-inner">
-            <div class="navBar-button-inner-line-left"></div>
-            Contact Me
-            <div class="navBar-button-inner-line-right"></div>
+        <a href="/contact">
+          <div class="navBar-button">
+            <div class="navBar-button-inner">
+              <div class="navBar-button-inner-line-left"></div>
+              Get in Touch
+              <div class="navBar-button-inner-line-right"></div>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     </section>
 

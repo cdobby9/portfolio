@@ -16,8 +16,8 @@ function initLoadingScreen() {
     return;
   }
 
-  const animationDuration = 3300;
-  const fadeDuration = 350;
+  const animationDuration = 2200;
+  const fadeDuration = 500;
 
   window.setTimeout(() => {
     loadingScreen.classList.add("is-exiting");

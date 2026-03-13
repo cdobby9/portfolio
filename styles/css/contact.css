@@ -24,7 +24,7 @@ body {
   align-items: center;
   z-index: 9999;
   opacity: 1;
-  transition: opacity 0.35s ease;
+  transition: opacity 1s ease;
 }
 
 #loading-screen.is-exiting {
@@ -85,8 +85,8 @@ body.page-ready #footer-load {
 
 .svg-elem-1 {
   animation:
-    animate-svg-stroke-1 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s both,
-    animate-svg-fill-1 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.5s both;
+    animate-svg-stroke-1 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s both,
+    animate-svg-fill-1 0.5s cubic-bezier(0.47, 0, 0.745, 0.715) 1.5s both;
 }
 
 @keyframes animate-svg-stroke-2 {
@@ -111,8 +111,8 @@ body.page-ready #footer-load {
 
 .svg-elem-2 {
   animation:
-    animate-svg-stroke-2 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.12s both,
-    animate-svg-fill-2 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 1.6s both;
+    animate-svg-stroke-2 1.2s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.12s both,
+    animate-svg-fill-2 0.5s cubic-bezier(0.47, 0, 0.745, 0.715) 1.6s both;
 }
 
 /* ===== Contact Main ===== */
@@ -377,3 +377,4 @@ grid-column-gap: 1rem;
     scroll-behavior: auto !important;
   }
 }
+

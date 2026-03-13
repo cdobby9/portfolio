@@ -410,7 +410,7 @@ body.page-ready #footer-load {
 }
 
 .view {
-  display: inline-flex;
+  display: inline-block;
   align-items: baseline;
   gap: 10px;
   font-weight: 900;
@@ -432,6 +432,19 @@ body.page-ready #footer-load {
   transition: transform 0.25s ease;
   font-size: 14px;
   line-height: 1;
+}
+
+.view:after {
+  display:block;
+  content: '';
+  border-bottom: solid 1.5px #ffffff;  
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+  transform-origin:100% 50%
+}
+.view:hover:after { 
+  transform: scaleX(1);
+  transform-origin:0 50%;
 }
 
 .view:hover {

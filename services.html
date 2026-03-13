@@ -2,11 +2,11 @@
 <html>
 
 <head>
-  <title>Blog | Charles Dobson</title>
+  <title>Contact | Charles Dobson</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="styles/css/global.css" />
-  <link rel="stylesheet" href="styles/css/blog.css" />
+  <link rel="stylesheet" href="styles/css/services.css" />
   <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.14/dist/lenis.css">
 
   <!-- Favicons -->
@@ -20,7 +20,6 @@
     });
   </script>
 </head>
-
 
 <body>
   <div id="loading-screen">
@@ -37,65 +36,46 @@
     <div id="navbar-load"></div>
   </header>
 
-  <main class="blog-main">
-    <div class="page-heading">
-      <div class="selector">
-        <div class="segmented" role="group" aria-label="Blog sort">
-          <span class="seg-indicator" aria-hidden="true"></span>
-          <button type="button" data-sort="recent" aria-pressed="true">Most Recent</button>
-          <button type="button" data-sort="oldest" aria-pressed="false">Oldest</button>
+  <main class="services-main">
+  
+    <section class="cards">
+
+      <div id="card-wrap">
+        <div class="card-shiny c1">
+          <h1 class="cards-title">Hand<br><span style="color: var(--primary);">Coded.</span></h1>
+          <p class="cards-body">Every website I create is hand-coded from scratch using HTML, CSS, and JavaScript. No templates, no shortcuts—just unique, tailored designs that make your brand stand out. I invest time and care into crafting websites that are fast, functional, and perfectly suited to your needs.</p>
         </div>
+
+
+        <div class="card-shiny c2">
+          <h1 class="cards-title">Responsive <span style="color: var(--primary);">Pages.</span></h1>
+          <p class="cards-body">Your website will look great on any device, from desktops to smartphones. I ensure that each design is fully responsive, so your customers have the best experience no matter how they view your site.</p>
+        </div>
+
+
+        <div class="card-shiny c3">
+          <h1 class="cards-title">User-Centric <span style="color: var(--primary);">Design.</span></h1>
+          <p class="cards-body">I specialize in creating visually impressive as well as user-friendly designs. My goal is to build a site that not only looks good but also ensures your visitors can easily navigate and find what they’re looking for.</p>
+        </div>
+
+        <div class="card-shiny c4">
+          <h1 class="cards-title">Backend <span style="color: var(--primary);">Integration.</span></h1>
+          <p class="cards-body">I can set up secure, scalable systems that work smoothly in the background, managing everything from user accounts to online forms. All without unnecessary complexity.</p>
+        </div>
+
+
       </div>
 
-      <div class="page-title">
-        <h1 class="page-title-text">Blog</h1>
-        <div class="page-title-line"></div>
-      </div>
-    </div>
 
-    <section class="list" id="blogList" aria-label="Blog posts"></section>
+    </section>
+
   </main>
 
-  <section class="cta">
-    <div class="hero-marquee">
-      <div class="hero-marquee-inner">
-        <p class="hero-marquee-text">Get In Touch &middot;</p>
-        <p class="hero-marquee-text">Get In Touch &middot;</p>
-        <p class="hero-marquee-text">Get In Touch &middot;</p>
-        <p class="hero-marquee-text">Get In Touch &middot;</p>
-        <p class="hero-marquee-text">Get In Touch &middot;</p>
-        <p class="hero-marquee-text">Get In Touch &middot;</p>
-        <p class="hero-marquee-text">Get In Touch &middot;</p>
-        <p class="hero-marquee-text">Get In Touch &middot;</p>
-        <p class="hero-marquee-text">Get In Touch &middot;</p>
-        <p class="hero-marquee-text">Get In Touch &middot;</p>
-        <p class="hero-marquee-text">Get In Touch &middot;</p>
-        <p class="hero-marquee-text">Get In Touch &middot;</p>
-        <p class="hero-marquee-text">Get In Touch &middot;</p>
-        <p class="hero-marquee-text">Get In Touch &middot;</p>
-        <p class="hero-marquee-text">Get In Touch &middot;</p>
-      </div>
-    </div>
-    <div class="cta-text">
-      <div class="cta-logo"></div>
-      <p class="cta-head">Like something<br>you see?</p>
-      <a href="/contact">
-        <div class="navBar-button">
-          <div class="navBar-button-inner">
-            <div class="navBar-button-inner-line-left"></div>
-            Get in Touch
-            <div class="navBar-button-inner-line-right"></div>
-          </div>
-        </div>
-      </a>
-    </div>
-  </section>
-  
   <div id="footer-load"></div>
 
   <script src="js/loader.js" defer></script>
   <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js" defer></script>
-  <script src="js/blog.js" defer></script>
+  <script src="js/services.js" defer></script>
 </body>
 
 </html>

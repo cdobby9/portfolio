@@ -1,46 +1,47 @@
+initLoadingScreen();
 
-document.addEventListener('DOMContentLoaded', () => {
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Function to animate elements
-  function animateElements(selector, fromProps, toProps) {
-    gsap.utils.toArray(selector).forEach(element => {
-      gsap.fromTo(element,
-        fromProps,
-        {
-          scrollTrigger: {
-            trigger: element,
-            start: "top 95%",
-            toggleActions: "play pause play reset",
-            once: true
-          },
-          ...toProps
-        });
-    });
-  }
-
-  animateElements('#card-wrap', 
-    { opacity: 0}, 
-    { opacity: 1, duration: 2 }
-  );
-  animateElements('.cards-header-line', 
-    { width: '0%' }, 
-    { width: '120%', duration: 2 }
-  );
-  animateElements('.stat-line', 
-    { width: '0%' }, 
-    { width: '99%', duration: 1.5, ease: "power4.inOut" }
-  );
-  animateElements('.stat-value', 
-    { transform: 'translateY(100%)' }, 
-    { transform: 'translateY(0%)', duration: 1.5, ease: "power4.inOut" }
-  );
-
-
-
+document.addEventListener("DOMContentLoaded", () => {
+  initLenis();
 });
 
+function initLoadingScreen() {
+  const loadingScreen = document.getElementById("loading-screen");
+  if (!document.body) {
+    return;
+  }
 
+  if (!loadingScreen) {
+    document.body.classList.add("page-ready");
+    return;
+  }
+
+  const animationDuration = 2200;
+  const fadeDuration = 500;
+
+  window.setTimeout(() => {
+    loadingScreen.classList.add("is-exiting");
+    document.body.classList.add("page-ready");
+
+    window.setTimeout(() => {
+      loadingScreen.style.display = "none";
+    }, fadeDuration);
+  }, animationDuration);
+}
+
+function initLenis() {
+  if (typeof Lenis !== "function") {
+    return;
+  }
+
+  const lenis = new Lenis();
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+}
 
 const buttons = document.querySelectorAll(".card-shiny");
 
@@ -136,12 +137,3 @@ document.querySelector("#card-wrap").style.perspective = `${settings.perspective
     }
   });
 })();
-
-  // Duration matches your SVG animation duration (3 seconds)
-  const animationDuration = 3000;
-
-  // Wait for the animation duration, then hide loading and show content
-  setTimeout(() => {
-    document.getElementById('loading-screen').style.display = 'none';
-    document.getElementById('page-content').style.display = 'block';
-  }, animationDuration);
