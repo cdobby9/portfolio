@@ -132,14 +132,14 @@ if (cardWrap) {
 
 
    const items = [
-      { id: 1, title: "WORK TITLE", category: "personal", status: "ongoing", date: "4th January 2026", href: "#", thumb: "" },
-      { id: 2, title: "WORK TITLE", category: "client", status: "finished", date: "4th January 2026", href: "#", thumb: "" },
-      { id: 3, title: "WORK TITLE", category: "client", status: "planned", date: "4th January 2026", href: "#", thumb: "" },
-      { id: 4, title: "WORK TITLE", category: "concept", status: "ongoing", date: "4th January 2026", href: "#", thumb: "" },
-      { id: 5, title: "WORK TITLE", category: "personal", status: "ongoing", date: "4th January 2026", href: "#", thumb: "" },
-      { id: 6, title: "WORK TITLE", category: "concept", status: "ongoing", date: "4th January 2026", href: "#", thumb: "" },
-      { id: 7, title: "WORK TITLE", category: "personal", status: "ongoing", date: "4th January 2026", href: "#", thumb: "" },
-      { id: 8, title: "WORK TITLE", category: "client", status: "ongoing", date: "4th January 2026", href: "#", thumb: "" },
+      { id: 1, title: "My Portfolio", category: "personal", status: "ongoing", date: "31st October 2024", href: "#", thumb: "../styles/img/thumbnailPortfolio.png" },
+      // { id: 2, title: "WORK TITLE", category: "client", status: "finished", date: "4th January 2026", href: "#", thumb: "" },
+      // { id: 3, title: "WORK TITLE", category: "client", status: "planned", date: "4th January 2026", href: "#", thumb: "" },
+      // { id: 4, title: "WORK TITLE", category: "concept", status: "ongoing", date: "4th January 2026", href: "#", thumb: "" },
+      // { id: 5, title: "WORK TITLE", category: "personal", status: "ongoing", date: "4th January 2026", href: "#", thumb: "" },
+      // { id: 6, title: "WORK TITLE", category: "concept", status: "ongoing", date: "4th January 2026", href: "#", thumb: "" },
+      // { id: 7, title: "WORK TITLE", category: "personal", status: "ongoing", date: "4th January 2026", href: "#", thumb: "" },
+      // { id: 8, title: "WORK TITLE", category: "client", status: "ongoing", date: "4th January 2026", href: "#", thumb: "" },
     ];
 
     const grid = document.getElementById('grid');
@@ -159,7 +159,7 @@ if (cardWrap) {
               <span class="pill pill--${item.category}">${catLabel}</span>
             </div>
             <div class="date">${item.date}</div>
-            <a class="view" href="${item.href}">View now</a>
+            <a class="view" href="${item.href}">view this<span class="arrow">→</span></a>
           </div>
         </article>
       `;

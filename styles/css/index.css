@@ -692,7 +692,6 @@ letter-spacing: 4px;
   border-style: solid;
   border-color: rgb(48, 54, 61);
   padding: 32px;
-  padding-top: 10px;
   border-radius: 10px;
   overflow: hidden;
   width: 100%;
@@ -736,9 +735,9 @@ letter-spacing: 4px;
   overflow: hidden;
 }
 
-.card-image svg {
-  width: 100%;
+.card-image img {
   height: 100%;
+  width: 100%;
   display: block;
 }
 
@@ -754,7 +753,8 @@ letter-spacing: 4px;
 .cards-title{
   text-align: left; 
   font-size: 3.5rem; 
-  line-height: 0px;
+  line-height: 1;
+  margin: 0;
 }
 
 .cards-tags {
@@ -840,6 +840,7 @@ letter-spacing: 4px;
   transform: scaleX(1);
   transform-origin:0 50%;
 }
+
 
 
 @media (max-width: 995px) {
