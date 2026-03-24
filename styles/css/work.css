@@ -471,7 +471,6 @@ body.page-ready #footer-load {
 
 @media (max-width: 600px) {
   .segmented {
-    width: 100%;
     overflow-x: auto;
   }
 
