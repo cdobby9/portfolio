@@ -5,22 +5,55 @@
   <title>Portfolio | Charles Dobson</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description" content="Charles Dobson is a UK-based freelance full-stack developer and UI/UX designer creating custom websites, apps, and software with clean, responsive code." />
+  <meta name="keywords" content="cdobby, cdobby9, Charlie Dobson, Charles Dobson, web developer, freelance developer, UI/UX designer, front-end developer, back-end developer, full-stack developer, portfolio" />
+  <meta name="author" content="Charles Dobson" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://cdobson.dev/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Charles Dobson | UK Freelance Web Developer" />
+  <meta property="og:description" content="Custom websites and software built by a UK-based developer focused on performance, UX, and scalable solutions." />
+  <meta property="og:url" content="https://cdobson.dev/" />
+  <meta property="og:image" content="https://cdobson.dev/styles/img/thumbnailPortfolio.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Charles Dobson | UK Freelance Web Developer" />
+  <meta name="twitter:description" content="Custom websites and software built by a UK-based developer focused on performance, UX, and scalable solutions." />
+  <meta name="twitter:image" content="https://cdobson.dev/styles/img/thumbnailPortfolio.png" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <link rel="preconnect" href="https://kit.fontawesome.com" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="stylesheet" href="styles/css/global.css" />
   <link rel="stylesheet" href="styles/css/index.css" />
   <link rel="stylesheet" href="styles/css/codeEditor.css" />
   <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.14/dist/lenis.css">
 
-    <!-- Favicons -->
+  <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="styles/img/favicon32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="styles/img/favicon16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="styles/img/favicon180.png" />
-
 
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       document.body.style.visibility = 'visible';
     });
-  </script> 
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Charles Dobson",
+      "url": "https://your-domain.com/",
+      "sameAs": [
+        "https://github.com/charlesdobson",
+        "https://www.linkedin.com/in/charlesdobson"
+      ],
+      "jobTitle": "Freelance Web Developer",
+      "description": "UK-based freelance full-stack developer and UX/UI designer building responsive, accessible websites and apps."
+    }
+  </script>
 </head>
 
 <body>
@@ -47,12 +80,14 @@
     <div id="navbar-load"></div>
   </header>
 
+  <main>
 
   <section id="hero" class="hero">
 
     <div class="hero-text">
-      <img class="hero-heading" src="styles/img/heroText.png">
-      <h1 class="hero-subheading">DEVELOPER & Web DESIGNER, BASED IN THE UK</h1>
+      <img class="hero-heading" src="styles/img/heroText.png" alt="Charles Dobson portfolio hero phrase" aria-hidden="true" />
+      <h1 class="hero-visually-hidden">Charles Dobson — UK Freelance Web Developer & UX/UI Designer</h1>
+      <h2 class="hero-subheading">DEVELOPER & Web DESIGNER, BASED IN THE UK</h2>
     </div>
 
 
@@ -244,7 +279,7 @@
 <div class="myWork">
   <div class="work-box" data-animate>
     <a class="work-box-link" href="/work"></a>
-    <img class="work-box-image" src="styles/img/workImg1.webp" />
+    <img class="work-box-image" src="styles/img/workImg1.webp" alt="Screenshot of featured project 1" />
     <div class="work-box-button-wrapper">
       <div class="work-box-button">
         <div class="work-box-button-text">work</div>
@@ -253,7 +288,7 @@
   </div>
   <div class="work-box" data-animate>
     <a class="work-box-link" href="/work#personal"></a>
-    <img class="work-box-image" src="styles/img/workImg3.webp" />
+    <img class="work-box-image" src="styles/img/workImg3.webp" alt="Screenshot of personal project gallery" />
     <div class="work-box-button-wrapper">
       <div class="work-box-button">
         <div class="work-box-button-text">projects</div>
@@ -262,7 +297,7 @@
   </div>
   <div class="work-box" data-animate>
     <a class="work-box-link" href="/work#concepts"></a>
-    <img class="work-box-image" src="styles/img/workImg2.webp" />
+    <img class="work-box-image" src="styles/img/workImg2.webp" alt="Screenshot of concept design work" />
     <div class="work-box-button-wrapper">
       <div class="work-box-button">
         <div class="work-box-button-text">concepts</div>
@@ -350,7 +385,7 @@
       </div>
     </section>
 
-
+  </main>
 
     <div id="footer-load"></div>
 
@@ -363,7 +398,6 @@
 
 
 
-</body>
 <script src="js/loader.js" defer></script>
 
 
@@ -375,9 +409,7 @@
 <script src="js/gsap.js"></script>
 
 <script>
-
 // smooth scroll
-
 
   // Initialize Lenis
 const lenis = new Lenis();
@@ -394,9 +426,7 @@ function raf(time) {
 }
 
 requestAnimationFrame(raf);
-
 </script>
 
-
-
+</body>
 </html>
