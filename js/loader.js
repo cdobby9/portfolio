@@ -17,7 +17,7 @@ function loadComponent(id, url) {
   }
   
   window.addEventListener("DOMContentLoaded", () => {
-    loadComponent("navbar-load", "components/navBar.html");
-    loadComponent("footer-load", "components/footer.html");
+    loadComponent("navbar-load", "/components/navBar.html");
+    loadComponent("footer-load", "/components/footer.html");
   });
   
