@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Making my own VPN | Charles Dobson</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="How I turned an old HP all-in-one into a Debian home server, Tailscale exit node, and personal VPN using hardware I already had." />
+  <link rel="stylesheet" href="../styles/css/global.css" />
+  <link rel="stylesheet" href="../styles/css/blog-post.css" />
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.14/dist/lenis.css" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../styles/img/favicon32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../styles/img/favicon16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../styles/img/favicon180.png" />
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.style.visibility = "visible";
+    });
+  </script>
+</head>
+
+<body>
+  <div class="reading-progress" aria-hidden="true">
+    <span class="reading-progress-bar"></span>
+  </div>
+
+  <div id="loading-screen">
+    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1255 1254" width="1255" height="100%">
+      <title>svg outline</title>
+      <g>
+        <path class="s0 svg-elem-1" d="m612.2 291.7c-2.2 3.7-7.2 12.6-11.2 19.8-4.1 7.1-9.7 16.9-12.7 21.7-2.9 4.7-5.3 9-5.3 9.6 0 0.5 2.7 5.1 5.9 10 9.1 13.9 24.8 40.3 53.6 90.2 14.4 25 55.1 95.7 90.5 157 35.4 61.3 68.4 118.7 73.5 127.5 5.1 8.8 16.1 27.9 24.5 42.5 8.4 14.6 22.2 38.4 30.5 53 8.4 14.6 23.6 40.9 33.7 58.5l18.5 32-60.1 0.8c-33.1 0.4-101.3 0.4-151.6 0l-91.4-0.8-19.2-33.5c-10.5-18.4-24.5-42.7-31.1-54l-12.1-20.5 9.6-0.6c5.4-0.4 47.4-0.7 93.5-0.8 46 0 83.7-0.4 83.7-0.8 0-1.4-11.7-22.6-21.2-38.6l-10.1-16.7-95 0.2-95 0.3-7.6 13.5c-4.2 7.4-11.3 19.7-15.9 27.2l-8.2 13.7 20.1 34.8c11.1 19.1 31.8 55.3 46.1 80.3 14.3 25 27.1 47.2 28.4 49.2l2.4 3.8h216c118.7 0 216.1-0.3 216.3-0.8 0.2-0.4-20.6-36.9-46.3-81.2-66.6-114.9-332-575.1-340.2-590-3.8-6.9-7.3-12.9-7.8-13.3-0.4-0.5-2.6 2.2-4.8 6z"></path>
+        <path class="s0 svg-elem-2" d="m499.5 487.7c-14.8 25.8-49 85.3-76 132.3-27 47-59 102.6-71 123.5-12 20.9-29.4 51-38.5 67-44.4 77.2-75 130.4-82.6 143.6-4.6 8-8.4 15.1-8.4 15.7 0 0.9 31 1.2 128.3 1.2 70.6 0 128.6-0.3 128.9-0.6 0.3-0.3-3-7.1-7.4-15.2-10.3-19-14-25.2-20.1-33.5l-4.9-6.7-52.6-0.1c-29-0.1-57.7-0.4-63.9-0.8l-11.2-0.6 65.2-113.5c35.9-62.5 82.3-143.3 103.2-179.7 20.9-36.4 38.3-66.2 38.6-66.3 0.6 0 13.6 22.4 46 79l14.5 25.5 31.9 0.3c17.5 0.1 32.2-0.1 32.7-0.6 0.4-0.4-6.7-13.6-15.9-29.2-9.2-15.7-37.2-64.2-62.3-107.9-25-43.7-46-79.6-46.6-79.8-0.5-0.2-13.1 20.7-27.9 46.4z"></path>
+      </g>
+    </svg>
+  </div>
+
+  <header>
+    <div id="navbar-load"></div>
+  </header>
+
+  <main class="post-main">
+    <section class="post-hero">
+      <div class="post-shell">
+        <a class="back-link" href="/blog"><span aria-hidden="true">&larr;</span>Back to blog</a>
+
+        <div class="post-hero-copy">
+          <div class="post-meta-row">
+            <div class="post-tags" aria-label="Post tags">
+              <span class="tag">Systems</span>
+              <span class="tag alt">Personal</span>
+              <span class="tag alt">Networks</span>
+              <span class="tag alt">Linux</span>
+            </div>
+
+            <div class="post-meta-stack" aria-label="Post metadata">
+              <time datetime="2026-02-26">26th February 2026</time>
+              <span>7 min read</span>
+            </div>
+          </div>
+
+          <h1 class="post-title">MAKING A HOME SERVER AND MY OWN VPN</h1>
+          <p class="post-dek">
+            What started as a way to stop paying for a VPN subscription turned into a Debian home server, a Tailscale
+            exit node, and one of the most useful self-hosted systems I have built.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="post-feature" id="post-feature">
+      <div class="post-shell">
+        <figure class="post-feature-figure">
+          <div class="post-feature-frame">
+            <img class="post-feature-image" src="../styles/img/blogs/vpn/debian.png"
+              alt="Image of the old HP all-in-one used as the VPN server" loading="eager"
+              decoding="async" />
+          </div>
+          <figcaption class="post-feature-caption">
+            The PC i was working with: an old HP all-in-one, running Debian.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <article class="post-article" id="post-article" aria-labelledby="post-article-title">
+      <div class="post-article-shell">
+        <div class="post-prose">
+          <h2 id="post-article-title">Why I Did This</h2>
+          <p>
+            Like most people, I was paying for a VPN subscription without really questioning it. Then I realised
+            something simple: I already had a computer at home, so why not just use that instead?
+          </p>
+          <p>
+            So I took an old HP all-in-one and turned it into a secure VPN server, a machine I could access remotely,
+            and the foundation for self-hosted services later on. It started as a cost-saving experiment and ended up
+            being a genuinely useful piece of infrastructure.
+          </p>
+
+          <aside class="post-callout" aria-label="Hardware summary">
+            <p>
+              <strong>The hardware was nothing special at all:</strong>
+            </p>
+            <ul>
+              <li>HP all-in-one PC</li>
+              <li>Intel i3, 7th gen</li>
+              <li>4GB RAM</li>
+              <li>Old hard drive</li>
+              <li>Vodafone home Wi-Fi, later switched to Ethernet</li>
+            </ul>
+          </aside>
+
+          <h2>What This Actually Is</h2>
+          <p>
+            At a surface level, this project is just a VPN. The more interesting version is that it is a small
+            distributed system made up of a client device on an external network, an encrypted overlay network,
+            a self-hosted node acting as a gateway, and the routing and network address translation needed to move
+            traffic between them.
+          </p>
+          <p>
+            What I effectively built was a system that redefines where my home network exists. Instead of being tied to
+            one physical location, it becomes something I can access from anywhere.
+          </p>
+
+          <blockquote>
+            A VPN only sounds simple until you start thinking about routing, trust boundaries, and where your traffic
+            is actually exiting to the internet.
+          </blockquote>
+
+          <figure>
+            <img src="../styles/img/blogs/vpn/diagram.png"
+              alt="Diagram showing the client, Tailscale, server, router, and internet"
+              loading="lazy" decoding="async" />
+            <figcaption>
+              Diagram showing the client, Tailscale tunnel, Debian server, home router, and
+              internet path.
+            </figcaption>
+          </figure>
+
+          <h2>Installing Debian</h2>
+          <p>
+            I installed Debian 13 using the minimal installer with no desktop environment. That meant a core system,
+            an SSH server, and very little else. It keeps the machine fast, light, and much closer to how real servers
+            are typically run.
+          </p>
+          <p>
+            That also forced me to work from the terminal from the start, which was useful because this project was
+            really about understanding the system rather than decorating it.
+          </p>
+
+          <h2>Locking It Down First</h2>
+          <p>
+            Before I touched the VPN side of it, I wanted the base machine to be secure. The first step was updating
+            everything, enabling a firewall, and allowing only SSH.
+          </p>
+
+          <pre><code>sudo apt update &amp;&amp; sudo apt upgrade -y
+
+sudo apt install ufw -y
+sudo ufw allow OpenSSH
+sudo ufw enable</code></pre>
+
+          <p>
+            I then switched SSH over to key-based authentication instead of passwords. That meant generating a key,
+            copying it to the server, and then disabling password login and root login in
+            <code>/etc/ssh/sshd_config</code>.
+          </p>
+
+          <pre><code>ssh-keygen
+ssh-copy-id charles@server-ip
+
+sudo nano /etc/ssh/sshd_config
+PasswordAuthentication no
+PermitRootLogin no
+
+sudo systemctl restart ssh</code></pre>
+
+          <aside class="post-callout" aria-label="Security note">
+            <p>
+              Removing password-based SSH access gets rid of one of the biggest attack surfaces immediately. For a box
+              that stays on at home, that matters more than any cosmetic optimisation.
+            </p>
+          </aside>
+
+          <h2>Tailscale</h2>
+          <p>
+            Instead of exposing services to the public internet or spending time on router port forwarding, I used
+            Tailscale. It made the whole setup far simpler.
+          </p>
+
+          <pre><code>curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up</code></pre>
+
+          <p>
+            After logging in, the server gets a private Tailscale address in the <code>100.x.x.x</code> range. That
+            means I can connect from anywhere, everything is encrypted, and I do not need to open ports on my home
+            router.
+          </p>
+
+          <h3>Why Tailscale Instead of a Traditional VPN?</h3>
+          <p>
+            I could have used OpenVPN or configured WireGuard directly, but Tailscale changes the model. Instead of
+            pushing traffic through a public-facing VPN server, it creates a secure overlay network and handles NAT
+            traversal for me.
+          </p>
+          <p>
+            Conceptually, it behaves less like the classic commercial VPN model and more like a private encrypted
+            network where my devices can find each other directly.
+          </p>
+
+          <h2>Turning It Into a Full VPN</h2>
+          <p>
+            Remote access was useful on its own, but I wanted all my traffic to route through home so I could browse
+            as if I was still on my Vodafone connection. That meant turning the server into an exit node.
+          </p>
+
+          <pre><code>echo "net.ipv4.ip_forward=1" | sudo tee /etc/sysctl.d/99-ipforward.conf
+
+cat /proc/sys/net/ipv4/ip_forward
+# should return 1
+
+sudo tailscale up --advertise-exit-node</code></pre>
+
+          <p>
+            Once that was enabled in the Tailscale admin panel, the traffic path changed from
+            <code>Device -&gt; Internet</code> to <code>Device -&gt; Server -&gt; Internet</code>. The server became a routing
+            decision point, which is really the key idea behind the whole setup.
+          </p>
+
+          <blockquote class="post-pullquote">
+            <p>Networking is about understanding systems, not memorising commands.</p>
+          </blockquote>
+
+          <h2>Testing It</h2>
+          <p>
+            I tested the exit node on mobile data. Before enabling it, my public IP was my carrier connection. After
+            enabling the exit node, my public IP became my home Vodafone address. That was the moment I knew it was
+            actually doing what I wanted.
+          </p>
+
+          <figure>
+            <img src="../styles/img/blogs/vpn/tailscale.png"
+              alt="Tailscale admin screenshot showing the server as an exit node and a mobile data test showing the public IP change"
+              loading="lazy" decoding="async" />
+            <figcaption>
+              Tailscale admin screenshot showing the server as an exit node and a mobile data test showing the public IP change.
+            </figcaption>
+          </figure>
+
+          <h2>Switching to Ethernet</h2>
+          <p>
+            I started on Wi-Fi, which worked, but it is not ideal for a machine that is supposed to behave like stable
+            infrastructure. So I switched it to Ethernet and configured the interface directly.
+          </p>
+
+          <pre><code>sudo nano /etc/network/interfaces
+
+allow-hotplug enp1s0
+iface enp1s0 inet dhcp
+
+sudo ifup enp1s0</code></pre>
+
+          <p>
+            It was assigned <code>192.168.1.153</code>, and the connection immediately felt more consistent. Ethernet
+            did not just improve raw speed. It reduced jitter, packet loss, and random instability, which matters just
+            as much for VPN performance as bandwidth does.
+          </p>
+
+          <ul>
+            <li>Latency variation dropped noticeably.</li>
+            <li>Packet loss stopped being a recurring annoyance.</li>
+            <li>The connection felt much more stable for remote access and full-tunnel use.</li>
+          </ul>
+
+          <h2>One Thing That Confused Me</h2>
+          <p>
+            At one point I tried to SSH into <code>192.168.1.153</code> from a hotspot connection and it failed. The
+            server was fine. The problem was that I was no longer on my home network.
+          </p>
+
+          <pre><code>ssh charles@192.168.1.153
+# fails outside the local network
+
+ssh charles@100.x.x.x
+# works over Tailscale</code></pre>
+
+          <p>
+            That was the moment the difference between local addressing and overlay networking really clicked. Private
+            <code>192.168.x.x</code> addresses are not globally routable. The Tailscale address bypasses that
+            limitation because the encrypted overlay network stitches the devices together directly.
+          </p>
+
+          <h2>Making It Reliable</h2>
+          <p>
+            A server that goes to sleep is not much use, so I disabled sleep states completely and enabled auto
+            power-on in the BIOS.
+          </p>
+
+          <pre><code>sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target</code></pre>
+
+          <p>
+            That way, even after a power cut, the machine comes straight back online without manual intervention.
+          </p>
+
+          <h2>Security and Performance</h2>
+          <p>
+            Security-wise, the setup is locked down by default: no open ports, no password login, encrypted
+            communication, and a firewall enabled from the start.
+          </p>
+          <p>
+            Performance-wise, the real bottleneck is my home upload speed rather than the old i3. The server handles
+            the encryption comfortably, and once it was on Ethernet the connection was stable enough for normal daily
+            use.
+          </p>
+
+          <h2>What I Learned</h2>
+          <p>
+            The most valuable part of the project was that it forced me to understand what was actually happening
+            instead of just copying steps from a guide.
+          </p>
+
+          <ul>
+            <li>Why private IP ranges are not globally routable.</li>
+            <li>How routing tables decide where traffic goes.</li>
+            <li>The role of NAT in outbound connections.</li>
+            <li>How encrypted tunnels behave under different conditions.</li>
+            <li>The difference between something working and being configured properly.</li>
+          </ul>
+
+          <p>
+            Debugging failed SSH attempts and networking mistakes made one thing obvious: computing is not just about
+            code, it is about designing systems that behave correctly under real conditions.
+          </p>
+
+          <h2>Why This Matters</h2>
+          <p>
+            Even though this was a home setup, the ideas behind it scale directly to cloud infrastructure, distributed
+            systems, secure networking, and remote compute environments. The tools change, but the core concepts do
+            not.
+          </p>
+          <p>
+            That is why I liked this project so much. It was practical, but it also reinforced a more general point:
+            good engineering comes from understanding how systems fit together, not just from getting a script to run
+            once.
+          </p>
+
+          <h2>Final Thoughts</h2>
+          <p>
+            This started with a simple question: can I stop paying for a VPN? It ended with a real server, a deeper
+            understanding of networking, and a useful piece of infrastructure built from hardware that would otherwise
+            have been thrown away.
+          </p>
+          <p>
+            For a project built on what was basically e-waste, the return was excellent.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <section class="related-posts" aria-labelledby="related-posts-heading">
+      <div class="post-shell">
+        <h2 id="related-posts-heading" class="visually-hidden">Related posts</h2>
+        <div class="work-line"></div>
+        <div class="work-marquee" aria-hidden="true">
+          <div class="work-marquee-text">
+            Related Posts <span style="color: var(--primary);">&middot;</span> Related Posts
+            <span style="color: var(--primary);">&middot;</span> Related Posts
+            <span style="color: var(--primary);">&middot;</span> Related Posts
+            <span style="color: var(--primary);">&middot;</span> Related Posts
+          </div>
+        </div>
+
+        <div class="related-grid">
+          <a class="related-card" href="/blog">
+            <span class="related-card-tag">Systems</span>
+            <h3 class="related-card-title">More Infrastructure Posts</h3>
+            <p class="related-card-copy">
+              Browse the archive for more work that sits closer to systems, networking, and the practical side of
+              computing.
+            </p>
+            <span class="related-card-meta">View archive <span aria-hidden="true">&rarr;</span></span>
+          </a>
+
+          <a class="related-card" href="/blog">
+            <span class="related-card-tag">Research</span>
+            <h3 class="related-card-title">Machine learning and experimental science</h3>
+            <p class="related-card-copy">
+              A research-focused post from a different angle of computing, linking systems thinking back to scientific
+              work.
+            </p>
+            <span class="related-card-meta">8 min read <span aria-hidden="true">&rarr;</span></span>
+          </a>
+
+          <a class="related-card" href="/blog">
+            <span class="related-card-tag">Python</span>
+            <h3 class="related-card-title">Number guessing AI</h3>
+            <p class="related-card-copy">
+              A smaller project post focused on search strategies, probability, and building something that learns.
+            </p>
+            <span class="related-card-meta">5 min read <span aria-hidden="true">&rarr;</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-load"></div>
+
+  <script src="../js/loader.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js" defer></script>
+  <script src="../js/blog-post.js" defer></script>
+  <script src="../js/gsap.js" defer></script>
+</body>
+
+</html>

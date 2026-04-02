@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Work Showcase Template | Charles Dobson</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A reusable work showcase template page for detailed project case studies by Charles Dobson." />
+  <link rel="stylesheet" href="../styles/css/global.css" />
+  <link rel="stylesheet" href="../styles/css/work-showcase.css" />
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.14/dist/lenis.css" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../styles/img/favicon32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../styles/img/favicon16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../styles/img/favicon180.png" />
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.style.visibility = "visible";
+    });
+  </script>
+</head>
+
+<body>
+  <div id="loading-screen">
+    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1255 1254" width="1255" height="100%">
+      <title>svg outline</title>
+      <g>
+        <path class="s0 svg-elem-1" d="m612.2 291.7c-2.2 3.7-7.2 12.6-11.2 19.8-4.1 7.1-9.7 16.9-12.7 21.7-2.9 4.7-5.3 9-5.3 9.6 0 0.5 2.7 5.1 5.9 10 9.1 13.9 24.8 40.3 53.6 90.2 14.4 25 55.1 95.7 90.5 157 35.4 61.3 68.4 118.7 73.5 127.5 5.1 8.8 16.1 27.9 24.5 42.5 8.4 14.6 22.2 38.4 30.5 53 8.4 14.6 23.6 40.9 33.7 58.5l18.5 32-60.1 0.8c-33.1 0.4-101.3 0.4-151.6 0l-91.4-0.8-19.2-33.5c-10.5-18.4-24.5-42.7-31.1-54l-12.1-20.5 9.6-0.6c5.4-0.4 47.4-0.7 93.5-0.8 46 0 83.7-0.4 83.7-0.8 0-1.4-11.7-22.6-21.2-38.6l-10.1-16.7-95 0.2-95 0.3-7.6 13.5c-4.2 7.4-11.3 19.7-15.9 27.2l-8.2 13.7 20.1 34.8c11.1 19.1 31.8 55.3 46.1 80.3 14.3 25 27.1 47.2 28.4 49.2l2.4 3.8h216c118.7 0 216.1-0.3 216.3-0.8 0.2-0.4-20.6-36.9-46.3-81.2-66.6-114.9-332-575.1-340.2-590-3.8-6.9-7.3-12.9-7.8-13.3-0.4-0.5-2.6 2.2-4.8 6z"></path>
+        <path class="s0 svg-elem-2" d="m499.5 487.7c-14.8 25.8-49 85.3-76 132.3-27 47-59 102.6-71 123.5-12 20.9-29.4 51-38.5 67-44.4 77.2-75 130.4-82.6 143.6-4.6 8-8.4 15.1-8.4 15.7 0 0.9 31 1.2 128.3 1.2 70.6 0 128.6-0.3 128.9-0.6 0.3-0.3-3-7.1-7.4-15.2-10.3-19-14-25.2-20.1-33.5l-4.9-6.7-52.6-0.1c-29-0.1-57.7-0.4-63.9-0.8l-11.2-0.6 65.2-113.5c35.9-62.5 82.3-143.3 103.2-179.7 20.9-36.4 38.3-66.2 38.6-66.3 0.6 0 13.6 22.4 46 79l14.5 25.5 31.9 0.3c17.5 0.1 32.2-0.1 32.7-0.6 0.4-0.4-6.7-13.6-15.9-29.2-9.2-15.7-37.2-64.2-62.3-107.9-25-43.7-46-79.6-46.6-79.8-0.5-0.2-13.1 20.7-27.9 46.4z"></path>
+      </g>
+    </svg>
+  </div>
+
+  <header>
+    <div id="navbar-load"></div>
+  </header>
+
+  <main class="showcase-main">
+    <section class="showcase-hero">
+      <div class="section-shell">
+        <h1 class="showcase-title">Project Title</h1>
+
+        <div class="showcase-stats" aria-label="Project quick facts">
+          <article class="showcase-stat">
+            <div class="stat-line"></div>
+            <p class="stat-title">Platform</p>
+            <p class="stat-value">Web</p>
+          </article>
+
+          <article class="showcase-stat">
+            <div class="stat-line"></div>
+            <p class="stat-title">Timeline</p>
+            <p class="stat-value">40 Weeks</p>
+          </article>
+
+          <article class="showcase-stat">
+            <div class="stat-line"></div>
+            <p class="stat-title">Role</p>
+            <p class="stat-value">Frontend</p>
+          </article>
+
+          <article class="showcase-stat">
+            <div class="stat-line"></div>
+            <p class="stat-title">Visit Project</p>
+            <a class="stat-link" href="https://example.com" target="_blank" rel="noreferrer noopener">Link<span aria-hidden="true">&rarr;</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase-marquee-strip" aria-label="Project summary ticker">
+      <div class="section-shell">
+        <div class="hero-marquee">
+          <div class="hero-marquee-inner">
+            <p class="hero-marquee-text">Platform: Web &middot; Timeline: 40 Weeks &middot; Role: Frontend &middot; Visit Project &middot;</p>
+            <p class="hero-marquee-text">Platform: Web &middot; Timeline: 40 Weeks &middot; Role: Frontend &middot; Visit Project &middot;</p>
+            <p class="hero-marquee-text">Platform: Web &middot; Timeline: 40 Weeks &middot; Role: Frontend &middot; Visit Project &middot;</p>
+            <p class="hero-marquee-text">Platform: Web &middot; Timeline: 40 Weeks &middot; Role: Frontend &middot; Visit Project &middot;</p>
+            <p class="hero-marquee-text">Platform: Web &middot; Timeline: 40 Weeks &middot; Role: Frontend &middot; Visit Project &middot;</p>
+            <p class="hero-marquee-text">Platform: Web &middot; Timeline: 40 Weeks &middot; Role: Frontend &middot; Visit Project &middot;</p>
+            <p class="hero-marquee-text">Platform: Web &middot; Timeline: 40 Weeks &middot; Role: Frontend &middot; Visit Project &middot;</p>
+            <p class="hero-marquee-text">Platform: Web &middot; Timeline: 40 Weeks &middot; Role: Frontend &middot; Visit Project &middot;</p>
+            <p class="hero-marquee-text">Platform: Web &middot; Timeline: 40 Weeks &middot; Role: Frontend &middot; Visit Project &middot;</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase-thumbnail-section" id="showcase-thumbnail">
+      <div class="section-shell">
+        <div class="showcase-thumbnail-frame">
+          <img class="showcase-thumbnail" src="../styles/img/projects/black1.png" alt="Project thumbnail" loading="eager" decoding="async" sizes="(max-width: 479px) 93vw, (max-width: 767px) 87vw, (max-width: 991px) 89vw, 84vw">
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase-breakdown" aria-labelledby="showcase-breakdown-title">
+      <div class="section-shell">
+        <div class="section-copy">
+          <p class="section-label">Project Breakdown</p>
+          <h2 id="showcase-breakdown-title" class="section-title">Project Secondary Title</h2>
+        </div>
+
+        <div class="breakdown-grid">
+          <article class="breakdown-card">
+            <span class="breakdown-index">01</span>
+            <h3>Challenge</h3>
+            <p>Use this card to explain the main problem, the constraints around it, and the context the work had to operate within.</p>
+          </article>
+
+          <article class="breakdown-card">
+            <span class="breakdown-index">02</span>
+            <h3>Goal</h3>
+            <p>Summarise the target outcome here so the reader immediately understands what success looked like before the work started.</p>
+          </article>
+
+          <article class="breakdown-card">
+            <span class="breakdown-index">03</span>
+            <h3>Solution</h3>
+            <p>Describe the answer at a high level, focusing on the direction, the execution, and why the final approach made sense.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase-gallery" id="gallery" aria-labelledby="gallery-title">
+      <div class="section-shell">
+        <div class="work-line"></div>
+        <div class="work-marquee">
+          <div id="gallery-title" class="work-marquee-text">
+            Gallery <span style="color: var(--primary);">&middot;</span> Gallery <span style="color: var(--primary);">&middot;</span> Gallery <span style="color: var(--primary);">&middot;</span> Gallery <span style="color: var(--primary);">&middot;</span> Gallery <span style="color: var(--primary);">&middot;</span> Gallery <span style="color: var(--primary);">&middot;</span> Gallery
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="gallery-item gallery-item--feature">
+            <img class="gallery-media" src="../styles/img/projects/white1.png" alt="Home page showcase preview" loading="lazy" decoding="async" data-focus-x="50" data-focus-y="58">
+            <div class="gallery-item-content">
+              <span class="gallery-pill">White 1</span>
+            </div>
+          </article>
+
+          <article class="gallery-item gallery-item--tall">
+            <img class="gallery-media" src="../styles/img/projects/white2.png" alt="Second page showcase preview" loading="lazy" decoding="async" data-focus-x="50" data-focus-y="35">
+            <div class="gallery-item-content">
+              <span class="gallery-pill">White 2</span>
+            </div>
+          </article>
+
+          <article class="gallery-item gallery-item--tall">
+            <img class="gallery-media" src="../styles/img/projects/white4.png" alt="Mobile showcase preview" loading="lazy" decoding="async" data-focus-x="50" data-focus-y="48">
+            <div class="gallery-item-content">
+              <span class="gallery-pill">White 4</span>
+            </div>
+          </article>
+
+          <article class="gallery-item gallery-item--wide">
+            <img class="gallery-media" src="../styles/img/projects/black2.png" alt="Third page showcase preview" loading="lazy" decoding="async" data-focus-x="50" data-focus-y="42">
+            <div class="gallery-item-content">
+              <span class="gallery-pill">Black 2</span>
+            </div>
+          </article>
+
+          <article class="gallery-item gallery-item--wide">
+            <img class="gallery-media" src="../styles/img/projects/black3.png" alt="Fourth page showcase preview" loading="lazy" decoding="async" data-focus-x="50" data-focus-y="52">
+            <div class="gallery-item-content">
+              <span class="gallery-pill">Black 3</span>
+            </div>
+          </article>
+
+          <article class="gallery-item gallery-item--wide">
+            <img class="gallery-media" src="../styles/img/projects/white3.png" alt="Tablet showcase preview" loading="lazy" decoding="async" data-focus-x="50" data-focus-y="50">
+            <div class="gallery-item-content">
+              <span class="gallery-pill">White 3</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase-testimonial" aria-labelledby="showcase-testimonial-title">
+      <div class="section-shell">
+        <div class="section-copy">
+          <p class="section-label">Client Feedback</p>
+          <h2 id="showcase-testimonial-title" class="section-title">Testimonial</h2>
+        </div>
+
+        <div class="testimonial-grid">
+          <article class="testimonial-card testimonial-quote-card">
+            <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
+            <p class="testimonial-quote">
+              Charles brought a lot of clarity to a project that could have easily become overdesigned. The final
+              result felt sharp, considered, and genuinely easy to use, which is exactly what we needed.
+            </p>
+
+            <div class="testimonial-attribution">
+              <p class="testimonial-person">Client Name</p>
+              <p class="testimonial-role">Founder, Example Studio</p>
+            </div>
+          </article>
+
+          <div class="testimonial-side-column">
+            <article class="testimonial-card testimonial-detail-card">
+              <p class="testimonial-kicker">What stood out</p>
+              <ul class="testimonial-list">
+                <li>Clear design direction from the start</li>
+                <li>Thoughtful frontend execution</li>
+                <li>Strong balance between style and usability</li>
+              </ul>
+            </article>
+
+            <article class="testimonial-card testimonial-detail-card">
+              <p class="testimonial-kicker">Project snapshot</p>
+              <div class="testimonial-chip-list" aria-label="Project highlights">
+                <span class="testimonial-chip">Responsive</span>
+                <span class="testimonial-chip">Accessible</span>
+                <span class="testimonial-chip">Frontend Build</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-load"></div>
+
+  <script src="../js/loader.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js" defer></script>
+  <script src="../js/work-showcase.js" defer></script>
+  <script src="../js/gsap.js" defer></script>
+</body>
+
+</html>

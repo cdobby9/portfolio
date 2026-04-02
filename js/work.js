@@ -132,7 +132,7 @@ if (cardWrap) {
 
 
    const items = [
-      { id: 1, title: "My Portfolio", category: "personal", status: "ongoing", date: "31st October 2024", href: "#", thumb: "../styles/img/thumbnailPortfolio.png" },
+      { id: 1, title: "My Portfolio", category: "personal", status: "ongoing", date: "31st October 2024", href: "../works/portfolio", thumb: "../styles/img/thumbnailPortfolio.png" },
       // { id: 2, title: "WORK TITLE", category: "client", status: "finished", date: "4th January 2026", href: "#", thumb: "" },
       // { id: 3, title: "WORK TITLE", category: "client", status: "planned", date: "4th January 2026", href: "#", thumb: "" },
       // { id: 4, title: "WORK TITLE", category: "concept", status: "ongoing", date: "4th January 2026", href: "#", thumb: "" },

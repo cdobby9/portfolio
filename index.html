@@ -45,9 +45,9 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Charles Dobson",
-      "url": "https://your-domain.com/",
+      "url": "https://cdobson.dev/",
       "sameAs": [
-        "https://github.com/charlesdobson",
+        "https://github.com/cdobby9",
         "https://www.linkedin.com/in/charlesdobson"
       ],
       "jobTitle": "Freelance Web Developer",
@@ -192,13 +192,32 @@
             <div class="about-text-container">
               <h1 class="about-text-header">About <span style="color: var(--primary);">Me.</span></h1>
               <p class="about-text-body">I build custom websites and software tailored specifically to what your business needs — no unnecessary extras, just solutions that work. As a freelance developer, I collaborate closely with clients to turn ideas into practical, well-crafted digital tools. Currently, I’m preparing to study computer science at university, which means I’m passionate about learning and eager to bring fresh thinking to every project.</p>
-                    <a href="/services"><div class="navBar-button"  style="margin-top: 15px;">
-          <div class="navBar-button-inner">
-            <div class="navBar-button-inner-line-left"></div>
-            See what I offer
-            <div class="navBar-button-inner-line-right"></div>
-          </div>
-        </div></a>
+              <div class="about-actions">
+                <a class="about-github-link" href="https://github.com/cdobby9" target="_blank" rel="noreferrer"
+                  aria-label="Visit my GitHub profile">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
+                </a>
+                <div class="about-tooltip-trigger" data-tooltip-open="false">
+                  <button class="navBar-button about-action-button about-action-button-secondary js-about-tooltip-trigger"
+                    type="button" aria-describedby="about-coming-soon-tooltip">
+                    <span class="navBar-button-inner">
+                      <span class="navBar-button-inner-line-left"></span>
+                      CV/Resume
+                      <span class="navBar-button-inner-line-right"></span>
+                    </span>
+                  </button>
+                  <span class="about-tooltip" id="about-coming-soon-tooltip" role="tooltip">Check back soon</span>
+                </div>
+                <a class="about-action-link" href="/services">
+                  <div class="navBar-button about-action-button">
+                    <div class="navBar-button-inner">
+                      <div class="navBar-button-inner-line-left"></div>
+                      See what I offer
+                      <div class="navBar-button-inner-line-right"></div>
+                    </div>
+                  </div>
+                </a>
+              </div>
             </div>
 
           </div>
@@ -309,7 +328,9 @@
 <div class="work-line"></div>
 <div class="work-marquee">
   <div class="work-marquee-text">
+    <a href="/work" style="color: var(--text);">
     View My Work <span style="color: var(--primary);">·</span> View My Work <span style="color: var(--primary);">·</span> View My Work <span style="color: var(--primary);">·</span> View My Work <span style="color: var(--primary);">·</span> View My Work <span style="color: var(--primary);">·</span> View My Work <span style="color: var(--primary);">·</span> View My Work
+    </a>
   </div>
 </div>
 </section>

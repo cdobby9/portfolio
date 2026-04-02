@@ -36,7 +36,50 @@ document.addEventListener('DOMContentLoaded', () => {
     { transform: 'translateY(0%)', duration: 1.5, ease: "power4.inOut" }
   );
 
+  const tooltipTriggers = document.querySelectorAll('.about-tooltip-trigger');
 
+  if (tooltipTriggers.length) {
+    const closeTooltips = () => {
+      tooltipTriggers.forEach(trigger => {
+        trigger.dataset.tooltipOpen = 'false';
+      });
+    };
+
+    tooltipTriggers.forEach(trigger => {
+      const button = trigger.querySelector('.js-about-tooltip-trigger');
+
+      if (!button) {
+        return;
+      }
+
+      button.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const isOpen = trigger.dataset.tooltipOpen === 'true';
+        closeTooltips();
+        trigger.dataset.tooltipOpen = isOpen ? 'false' : 'true';
+      });
+
+      trigger.addEventListener('focusout', event => {
+        if (!event.relatedTarget || !trigger.contains(event.relatedTarget)) {
+          trigger.dataset.tooltipOpen = 'false';
+        }
+      });
+    });
+
+    document.addEventListener('click', event => {
+      if (![...tooltipTriggers].some(trigger => trigger.contains(event.target))) {
+        closeTooltips();
+      }
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        closeTooltips();
+      }
+    });
+  }
 
 });
 

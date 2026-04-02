@@ -24,21 +24,21 @@ document.addEventListener("DOMContentLoaded", () => {
       description:
         "This is by far the project I've spent the longest time on as well as my most important project. Over the course of 3 years, I've tried to develop something where I can showcase not only my services as a freelance web developer to small businesses, but also to show the full scope of my abilities and learning as a computer scientist and academic in general. It is full hand coded with as minimal AI 'vibe-coding' as you can get away with in modern web development. For this, I used a fully vanilla full web stack of HTML, CSS and JS and hosted with Netlify. The design is a mix of my own ideas and inspirations from around the web, with a focus on it being a clean, modern and smooth experience to prove my eye for design and my ability to execute it through my programming ability. I also wanted to make sure it was fully responsive and accessible (although I would prefer it to be mainly viewed on a regular desktop), so it looks great and works well on all device sizes. Overall, I'm really proud of it, and I think it does a great job of showing off everything about me.",
       readTime: "10 min read",
-      href: "blogs/portfolio",
+      href: null,
       thumbnail: ""
     },
     {
       id: 2,
-      title: "Making a home server and my own VPN",
+      title: "I Built My Own VPN Using an Old PC",
       primaryTag: "Systems",
       tags: ["Personal", "Networks", "Linux"],
-      publishedAt: "2026-2-26",
+      publishedAt: "2026-02-26",
       date: "26th February 2026",
       description:
         "I had never really explored this area of computer science, and it's not one I knew well. Turning an old all-in-one PC that was lying around in my house into a personal home server, I found, was a great way to introduce myself to it and see how interested I was. It was an incredibly successful project, and I truly enjoyed the process and the problem-solving needed to navigate a new area in computing. With the vast number of DVDs and Blu-rays we had stored away, unlikely to be used again, with the rise of cloud streaming, I managed to painstakingly upload them all to my own cloud streaming service. To access this from anywhere, I created a VPN on the server, using Tailscale. Which doubled to keep my information safe on public and school WIFIs. This caused me to end up cancelling both my VPN and Netflix subscription, saving me a fair bit of money in the long run – plus you can beat the feeling of using something you personally built. ",
-      readTime: "6 min read",
-      href: "#",
-      thumbnail: ""
+      readTime: "7 min read",
+      href: "blog/vpnserver",
+      thumbnail: "../styles/img/blogs/vpn/diagram.png"
     },
     {
       id: 3,
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description:
         "This was my entry to my school's internal ‘Lloyd-Berger Computer Science Prize’, of which I ended up winning outright. It really allowed me to get into the ways computers search and how the best way can vary depending on the scenario. It also introduced me to making my own machine learning program with Python. My main goal was to try to reduce the average number of guesses it takes to predict the user’s chosen number out of 1-100. I try out multiple methods to achieve this, and combine psychological assumptions with an algorithm that learns the specific user’s biases.",
       readTime: "5 min read",
-      href: "#",
+      href: null,
       thumbnail: ""
     },
         {
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description:
         "This was my entry to the Kelvin Biological Sciences Prize by Peterhouse College at Cambridge. This was a great opportunity to deepen my understanding of Machine Learning after really enjoying my previous project in ML…",
       readTime: "8 min read",
-      href: "#",
+      href: null,
       thumbnail: ""
     },
         {
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       description:
         "This research project essay was my entry to the John Locke Institute's Economics Prize. Taking economics for A-Level, this question presented the perfect opportunity to combine my deep extra-curricular interest in Computer Science with my curricular studies…",
       readTime: "3 min read",
-      href: "#",
+      href: null,
       thumbnail: ""
     }
   ];
@@ -176,6 +176,13 @@ function postTemplate(post) {
   const thumbMarkup = post.thumbnail
     ? `<img src="${escapeAttr(post.thumbnail)}" alt="" loading="lazy" />`
     : placeholderThumb(post.id);
+  const actionMarkup = post.href
+    ? `<a class="view" href="${escapeAttr(post.href)}">
+                View now <span class="arrow">&rarr;</span>
+              </a>`
+    : `<span class="view is-disabled" aria-disabled="true">
+                Coming soon
+              </span>`;
 
   return `
     <article class="post" data-post>
@@ -200,9 +207,7 @@ function postTemplate(post) {
             <p class="excerpt">${escapeHtml(post.description || "")}</p>
 
             <div class="actions">
-              <a class="view" href="${escapeAttr(post.href || "#")}">
-                View now <span class="arrow">&rarr;</span>
-              </a>
+              ${actionMarkup}
               <span class="readtime">${escapeHtml(post.readTime || "")}</span>
             </div>
           </div>
@@ -246,6 +251,7 @@ function bindCardInteractions(state) {
 
   cards.forEach((card) => {
     const button = card.querySelector(".post-btn");
+    const interactiveSelector = "a, button";
 
     const handlePointerMove = (event) => {
       updateGlowPosition(card, event);
@@ -268,13 +274,7 @@ function bindCardInteractions(state) {
       card.classList.remove("is-active");
     });
 
-    if (!button) {
-      return;
-    }
-
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-
+    const toggleCard = () => {
       if (state.pinned === card) {
         state.pinned = null;
         card.classList.remove("is-active");
@@ -283,6 +283,24 @@ function bindCardInteractions(state) {
 
       state.pinned = card;
       setActive(card);
+    };
+
+    card.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element) || target.closest(interactiveSelector)) {
+        return;
+      }
+
+      event.stopPropagation();
+      toggleCard();
+    });
+
+    if (!button) {
+      return;
+    }
+
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
     });
   });
 }

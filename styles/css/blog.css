@@ -278,8 +278,8 @@ body.page-ready #footer-load {
   inset: 0;
   border: 0;
   background: transparent;
-  cursor: pointer;
-  z-index: 4;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .post-btn:focus-visible {
@@ -358,7 +358,7 @@ body.page-ready #footer-load {
 
 .post-body {
   position: relative;
-  z-index: 3;
+  z-index: 4;
   padding: 0 var(--pad);
   max-height: 0;
   opacity: 0;
@@ -411,6 +411,7 @@ body.page-ready #footer-load {
 
 .view {
   display: inline-block;
+  position: relative;
   align-items: baseline;
   gap: 10px;
   font-weight: 900;
@@ -424,6 +425,7 @@ body.page-ready #footer-load {
   border-bottom: 2px solid rgba(var(--primary-rgb), 0);
   transition: border-color 0.25s ease, transform 0.25s ease;
   width: fit-content;
+  z-index: 7;
 }
 
 .view .arrow {
@@ -447,13 +449,19 @@ body.page-ready #footer-load {
   transform-origin:0 50%;
 }
 
-.view:hover {
-  border-color: rgba(var(--primary-rgb), 0.7);
-  transform: translateX(2px);
-}
-
 .view:hover .arrow {
   transform: translateX(4px);
+}
+
+.view.is-disabled {
+  color: rgba(255, 255, 255, 0.45);
+  cursor: default;
+  border-bottom: 0;
+  transform: none;
+}
+
+.view.is-disabled:after {
+  display: none;
 }
 
 .readtime {

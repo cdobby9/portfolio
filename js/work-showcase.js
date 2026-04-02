@@ -24,6 +24,7 @@ function initLoadingScreen() {
     loadingScreen.classList.add("is-exiting");
     document.body.classList.add("page-ready");
     initStatsScrollAnimation();
+    initTestimonialAnimations();
 
     window.setTimeout(() => {
       loadingScreen.style.display = "none";
@@ -164,6 +165,64 @@ function initThumbnailParallax() {
         start: "top bottom",
         end: "bottom top",
         scrub: 0.7
+      }
+    }
+  );
+}
+
+function initTestimonialAnimations() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
+    return;
+  }
+
+  const copy = document.querySelector(".showcase-testimonial .section-copy");
+  const cards = gsap.utils.toArray(".testimonial-card");
+
+  if (copy) {
+    gsap.fromTo(
+      copy,
+      {
+        opacity: 0,
+        y: 28
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: copy,
+          start: "top 88%",
+          once: true
+        }
+      }
+    );
+  }
+
+  if (!cards.length) {
+    return;
+  }
+
+  gsap.fromTo(
+    cards,
+    {
+      opacity: 0,
+      y: 36
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.95,
+      ease: "power3.out",
+      stagger: 0.12,
+      scrollTrigger: {
+        trigger: ".testimonial-grid",
+        start: "top 84%",
+        once: true
       }
     }
   );
