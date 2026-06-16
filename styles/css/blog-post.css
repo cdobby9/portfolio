@@ -259,6 +259,11 @@ body.page-ready #footer-load {
   margin: 0;
 }
 
+.post-feature-figure--document {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
 .post-feature-frame {
   position: relative;
   width: 100%;
@@ -282,6 +287,15 @@ body.page-ready #footer-load {
   pointer-events: none;
 }
 
+.post-feature-frame--document {
+  aspect-ratio: auto;
+  padding: clamp(1rem, 2vw, 1.4rem);
+}
+
+.post-feature-frame--document::after {
+  display: none;
+}
+
 .post-feature-image {
   position: absolute;
   inset: -4% 0;
@@ -291,6 +305,15 @@ body.page-ready #footer-load {
   object-fit: cover;
   transform: scale(1.06);
   will-change: transform;
+}
+
+.post-feature-image--contain {
+  position: relative;
+  inset: auto;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
+  transform: none;
 }
 
 .post-feature-caption {
@@ -344,6 +367,20 @@ body.page-ready #footer-load {
   font-size: clamp(1.5rem, 2.5vw, 2rem);
 }
 
+.post-main--essay .post-title {
+  max-width: 16ch;
+  letter-spacing: 0.02em;
+  line-height: 1.06;
+  text-transform: none;
+}
+
+.post-main--essay .post-prose h2,
+.post-main--essay .post-prose h3 {
+  letter-spacing: 0.02em;
+  line-height: 1.12;
+  text-transform: none;
+}
+
 .post-prose p,
 .post-prose li {
   color: var(--prose);
@@ -359,7 +396,6 @@ body.page-ready #footer-load {
 }
 
 .post-prose a {
-  color: var(--primary);
   text-decoration: underline;
   text-decoration-color: rgba(var(--primary-rgb), 0.45);
   text-underline-offset: 0.18em;
@@ -435,6 +471,73 @@ body.page-ready #footer-load {
   color: rgba(255, 255, 255, 0.84);
 }
 
+.post-callout-kicker {
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.post-callout--download {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+}
+
+.post-callout--download > * + * {
+  margin-top: 0;
+}
+
+.post-download-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.post-download-title,
+.post-download-copy {
+  margin: 0;
+}
+
+.post-download-copy {
+  margin-top: 0.25rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.post-download-link {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(var(--primary-rgb), 0.95);
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.22);
+}
+
+.post-download-link:hover,
+.post-download-link:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+  background: rgb(var(--primary-rgb));
+}
+
+.post-download-link:focus-visible {
+  outline: 2px solid rgba(var(--primary-rgb), 0.6);
+  outline-offset: 4px;
+}
+
 .post-pullquote {
   margin-top: 2.6rem;
   padding: 2rem 0 0;
@@ -449,6 +552,25 @@ body.page-ready #footer-load {
   line-height: 1.15;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+}
+
+.post-reference-list ul {
+  margin: 0;
+  padding-left: 1.35rem;
+}
+
+.post-reference-list li {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.98rem;
+  line-height: 1.8;
+}
+
+.post-reference-list li + li {
+  margin-top: 1rem;
+}
+
+.post-reference-list a {
+  overflow-wrap: anywhere;
 }
 
 .related-posts {
@@ -642,6 +764,15 @@ body.page-ready #footer-load {
 @media (max-width: 640px) {
   .post-dek {
     font-size: 1rem;
+  }
+
+  .post-download-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .post-callout--download {
+    padding: 1.2rem 1.1rem;
   }
 
   .post-article {

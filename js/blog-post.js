@@ -151,7 +151,7 @@ function initReadingProgressFallback() {
 function initFeatureParallax() {
   const frame = document.querySelector(".post-feature-frame");
   const media = document.querySelector(".post-feature-image");
-  if (!frame || !media) {
+  if (!frame || !media || media.classList.contains("post-feature-image--contain")) {
     return;
   }
 

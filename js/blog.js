@@ -53,20 +53,20 @@ document.addEventListener("DOMContentLoaded", () => {
       href: null,
       thumbnail: ""
     },
-        {
+    {
       id: 4,
       title: "Machine Learning & Experimental Science",
       primaryTag: "Research",
-      tags: ["ML", "Competitions", "Essay"],
-      publishedAt: "2026-4-30",
-      date: "30th April 2026",
+      tags: ["ML", "Chemistry", "Essay"],
+      publishedAt: "2026-04-18",
+      date: "18th April 2026",
       description:
         "This was my entry to the Kelvin Biological Sciences Prize by Peterhouse College at Cambridge. This was a great opportunity to deepen my understanding of Machine Learning after really enjoying my previous project in ML…",
       readTime: "8 min read",
-      href: null,
-      thumbnail: ""
+      href: "blog/ml-experimental-chemistry",
+      thumbnail: "../styles/img/blogs/ml-chemistry/cover.png"
     },
-        {
+    {
       id: 5,
       title: "Modern Technology & Personalised Pricing",
       primaryTag: "Research",
@@ -78,6 +78,19 @@ document.addEventListener("DOMContentLoaded", () => {
       readTime: "3 min read",
       href: null,
       thumbnail: ""
+    },
+    {
+      id: 6,
+      title: "Target 2.0 Challenge",
+      primaryTag: "Economics",
+      tags: ["Research", "Essay", "Monetary Policy"],
+      publishedAt: "2026-03-01",
+      date: "March 2026",
+      description:
+        "My submission to my school's Target 2.0 Challenge, this piece argues that the MPC should hold the Bank Rate at 3.75% by weighing sticky inflation, rising energy-price pressure, and a still-fragile UK demand outlook.",
+      readTime: "5 min read",
+      href: "blog/target2challenge",
+      thumbnail: "../styles/img/blogs/target2/figure-1-bank-rate.png"
     }
   ];
 
